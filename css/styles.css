@@ -70,3 +70,6 @@ video {
   color: #fff;
 }
 
+#show-video{
+  visibility: hidden;
+}

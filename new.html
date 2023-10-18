@@ -27,7 +27,7 @@
         Record Audio
       </button>
       <button type="button" onclick="recordVideo()" class="btn btn-info">
-        Record Video
+        Show Camera
       </button>
       <button type="button" onclick="recordScreen()" class="btn btn-info">
         Record Screen
@@ -35,11 +35,14 @@
 
       <div class="p-5">
         <!-- Preview video element -->
-        <video autoplay height="480" width="640" muted></video>
-      </div>
-      <!-- Video playback element -->
-      <div class="p-5">
-        <video id="recordedVideo" controls></video>
+        <video
+          id="show-video"
+          autoplay
+          height="480"
+          width="640"
+          controls
+          download
+        ></video>
       </div>
       <input
         type="file"
@@ -59,8 +62,9 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script></script>
-    </body>
+  </body>
 
   <link rel="stylesheet" href="./css/styles.css" />
+  <script src="./js/sweetalert.min.js"></script>
   <script src="./js/new.js"></script>
 </html>

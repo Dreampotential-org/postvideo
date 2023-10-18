@@ -63,11 +63,12 @@ function handleFileUpload(data) {
 
 // Function to update the preview video element with the recorded video
 function updatePreview(videoBlob, fileName) {
-  const recordedVideoElement = document.getElementById('recordedVideo');
+  const recordedVideoElement = document.getElementById('show-video');
+  recordedVideoElement.style.visibility = 'visible';
   recordedVideoElement.src = URL.createObjectURL(videoBlob);
   const newFile = new File([videoBlob], fileName, { type: 'video/webm' });
   recordedStreamFile = newFile;
-  console.log(recordedVideoElement);
+  console.log(swal());
 }
 
 // =========================
@@ -79,14 +80,7 @@ function init() {
     var file = e.target.files[0];
     GLOBAL_FILE = file;
     $('#upload_vid_form').submit();
-    console.log({
-      title: '0%',
-      text: 'Video uploading please wait.',
-      icon: 'info',
-      buttons: false,
-      closeOnEsc: false,
-      closeOnClickOutside: false,
-    });
+    console.log(swal);
   });
 
   $('#submit').click(function (e) {
@@ -144,7 +138,8 @@ const handleRecord = function ({ stream, mimeType }) {
       type: mimeType,
     });
     recordedChunks = [];
-    const filename = window.prompt('Enter file name');
+    const currentDate = new Date();
+    const filename = currentDate.toString();
     downloadLink.href = URL.createObjectURL(blob);
     downloadLink.download = `${filename || 'recording'}.webm`;
     stopRecord();
@@ -205,7 +200,7 @@ async function recordScreen() {
     video: { cursor: 'motion' },
     audio: { echoCancellation: true },
   });
-  if (window.confirm('Record audio with screen?')) {
+  if (true) {
     const audioContext = new AudioContext();
 
     const voiceStream = await navigator.mediaDevices.getUserMedia({
@@ -249,7 +244,7 @@ function openFileUpload() {
 }
 
 function handleUploadedVideo(event) {
-  const videoElement = document.getElementById('recordedVideo');
+  const videoElement = document.getElementById('show-video');
   const fileInput = event.target;
 
   if (fileInput.files.length > 0) {
