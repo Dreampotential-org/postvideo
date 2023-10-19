@@ -11,6 +11,10 @@ var recordedStreamFile = null;
 recordAudioElement.addEventListener('click', recordAudio);
 recordVideoElement.addEventListener('click', recordVideo);
 recordScreenElement.addEventListener('click', recordScreen);
+stopButton.addEventListener('click', function () {
+  shouldStop = true;
+});
+
 
 function handleFileUpload(data) {
   var xhr = new XMLHttpRequest();
@@ -119,9 +123,6 @@ const audioRecordConstraints = {
   echoCancellation: true,
 };
 
-stopButton.addEventListener('click', function () {
-  shouldStop = true;
-});
 
 const handleRecord = function ({ stream, mimeType }) {
   startRecord();
