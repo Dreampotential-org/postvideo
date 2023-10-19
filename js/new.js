@@ -1,9 +1,16 @@
 let shouldStop = false;
 let stopped = false;
-const videoElement = document.getElementsByTagName('video')[0];
+const recordAudioElement = document.getElementById('record-audio');
+const recordVideoElement = document.getElementById('record-video');
+const recordScreenElement = document.getElementById('record-screen');
+const videoElement = document.getElementById('show-video');
 const downloadLink = document.getElementById('download');
 const stopButton = document.getElementById('stop');
 var recordedStreamFile = null;
+
+recordAudioElement.addEventListener('click', recordAudio);
+recordVideoElement.addEventListener('click', recordVideo);
+recordScreenElement.addEventListener('click', recordScreen);
 
 function handleFileUpload(data) {
   var xhr = new XMLHttpRequest();
@@ -162,6 +169,7 @@ async function recordAudio() {
 }
 
 async function recordVideo() {
+  videoElement.style.visibility = 'visible';
   const mimeType = 'video/webm';
   shouldStop = false;
   const constraints = {
