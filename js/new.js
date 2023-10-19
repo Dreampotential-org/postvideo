@@ -79,7 +79,7 @@ function updatePreview(videoBlob, fileName) {
   recordedVideoElement.src = URL.createObjectURL(videoBlob);
   const newFile = new File([videoBlob], fileName, { type: 'video/webm' });
   recordedStreamFile = newFile;
-  console.log(swal());
+  console.log();
 }
 
 // =========================
