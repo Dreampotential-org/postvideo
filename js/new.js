@@ -1,3 +1,5 @@
+
+
 let shouldStop = false;
 let stopped = false;
 const recordAudioElement = document.getElementById('record-audio');
@@ -26,7 +28,7 @@ function handleFileUpload(data) {
     }
   }
 
-  console.log({
+  swal({
     title: '0%',
     text: 'Video uploading please wait.',
     icon: 'info',
@@ -38,17 +40,16 @@ function handleFileUpload(data) {
   xhr.upload.addEventListener('progress', updateProgress, false);
   xhr.addEventListener('readystatechange', function () {
     if (this.readyState === 4) {
-      console.log(this);
+      console.log(this.responseText);
       $('body').append(this.content);
       if (this.status == 200) {
-        console.log({
+        swal({
           title: 'Good job!',
           text: 'Video submitted successfully!',
           icon: 'success',
         });
       } else {
-        console
-          .log({
+        swal({
             title: 'Error Try Again',
             text: 'Sorry, there is an error please try again later.',
             icon: 'error',

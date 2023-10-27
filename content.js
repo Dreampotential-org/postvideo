@@ -1,5 +1,5 @@
 
-function init() {
+
 
   $("#upload").on("change", function (e) {
     e.preventDefault();
@@ -74,6 +74,6 @@ function init() {
     //);
     xhr.send(data);
   });
-}
+
 window.addEventListener('DOMContentLoaded', init, false);
 
