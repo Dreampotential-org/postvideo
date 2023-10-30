@@ -47,6 +47,12 @@ function handleFileUpload(data) {
           title: 'Good job!',
           text: 'Video submitted successfully!',
           icon: 'success',
+          button : "Ok"
+        }).then(() => {
+          const responseObj = JSON.parse(this.responseText);
+          const id = responseObj.id;
+
+          window.location.href = "video.html?id=" + id;
         });
       } else {
         swal({
